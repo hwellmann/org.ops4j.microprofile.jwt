@@ -16,6 +16,7 @@
     <modules>
         <module>ops4j-jwt-auth</module>
         <module>ops4j-jwt-demo</module>
+        <module>ops4j-jwt-tck</module>
     </modules>
 
     <properties>
