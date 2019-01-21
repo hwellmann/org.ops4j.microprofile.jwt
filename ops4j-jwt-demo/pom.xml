@@ -12,11 +12,9 @@
     
     <properties>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-    </properties>
+    </properties>    
     
-    
-    <dependencies>
-    
+    <dependencies>    
         <dependency>
             <groupId>org.ops4j.microprofile.jwt</groupId>
             <artifactId>ops4j-jwt-auth</artifactId>
@@ -28,6 +26,6 @@
             <artifactId>javaee-api</artifactId>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
+    
 </project>
