@@ -114,8 +114,7 @@
                         <JBOSS_HOME>${project.build.directory}/wildfly-${version.wildfly}</JBOSS_HOME>
                     </environmentVariables>
                     <systemPropertyVariables>
-                        <swarm.debug.port>8888</swarm.debug.port>
-                        <swarm.logging>DEBUG</swarm.logging>
+                        <jboss.options>--add-modules java.se</jboss.options>
                     </systemPropertyVariables>
                     <redirectTestOutputToFile>true</redirectTestOutputToFile>
                     <suiteXmlFiles>

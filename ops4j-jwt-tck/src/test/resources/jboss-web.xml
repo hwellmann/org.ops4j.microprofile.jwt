@@ -5,5 +5,6 @@
 
   <default-encoding>UTF-8</default-encoding>
   <security-domain>jaspitest</security-domain>
+  <context-root>/</context-root>
 
 </jboss-web>

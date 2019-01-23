@@ -76,8 +76,8 @@ public class MPJWTExtension implements Extension {
         String extensionName = MPJWTExtension.class.getName();
         for (Class<?> clazz : new Class<?>[] {
                 // JWTAuthContextInfoProvider.class,
-                MPJWTProducer.class,
-                PrincipalProducer.class,
+                // MPJWTProducer.class,
+                // PrincipalProducer.class,
                 RawClaimTypeProducer.class,
                 ClaimValueProducer.class,
                 JsonValueProducer.class,

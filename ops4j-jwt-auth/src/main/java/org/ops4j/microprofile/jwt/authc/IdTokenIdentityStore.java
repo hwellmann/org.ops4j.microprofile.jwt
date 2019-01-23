@@ -2,6 +2,7 @@ package org.ops4j.microprofile.jwt.authc;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.security.enterprise.credential.Credential;
 import javax.security.enterprise.identitystore.CredentialValidationResult;
 import javax.security.enterprise.identitystore.IdentityStore;
 
@@ -42,10 +43,11 @@ public class IdTokenIdentityStore implements IdentityStore {
 	 *         {@code USER}.
 	 * @throws ParseException
 	 */
-	public CredentialValidationResult validate(IdTokenCredential credential) throws ParseException {
+	@Override
+	public CredentialValidationResult validate(Credential credential) {
 		JWTCallerPrincipalFactory factory = JWTCallerPrincipalFactory.instance();
 		try {
-			JWTCallerPrincipal callerPrincipal = factory.parse(credential.getToken(), authContextInfo);
+			JWTCallerPrincipal callerPrincipal = factory.parse(((IdTokenCredential) credential).getToken(), authContextInfo);
 			MPJWTProducer.setJWTPrincipal(callerPrincipal);
 
 			log.debug("Authenticated user: {}", callerPrincipal.getName());

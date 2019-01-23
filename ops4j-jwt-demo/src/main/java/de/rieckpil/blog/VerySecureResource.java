@@ -2,6 +2,8 @@ package de.rieckpil.blog;
 
 import java.security.Principal;
 
+import javax.annotation.security.DenyAll;
+import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -15,6 +17,7 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 
 @Path("secure")
 @RequestScoped
+@DenyAll
 public class VerySecureResource {
 
 	private String message = "This is a secret text.";
@@ -44,5 +47,12 @@ public class VerySecureResource {
 		System.out.println(webToken.getTokenID());
 
 		return Response.ok(principalName + " is allowed to read message: " + message).build();
+	}
+
+	@Path("allowed")
+	@GET
+	@PermitAll
+	public String allowed() {
+		return "allowed";
 	}
 }
