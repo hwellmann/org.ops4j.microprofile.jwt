@@ -12,41 +12,31 @@
     <artifactId>ops4j-jwt-tck</artifactId>
     
     <properties>
-        <version.wildfly>14.0.1.Final</version.wildfly>
+        <version.wildfly>15.0.0.Final</version.wildfly>
     </properties>    
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.jboss.arquillian</groupId>
-                <artifactId>arquillian-bom</artifactId>
-                <version>1.4.1.Final</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <!-- Arquillian extension SPI -->
         <dependency>
             <groupId>org.jboss.arquillian.container</groupId>
             <artifactId>arquillian-container-spi</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.arquillian.container</groupId>
             <artifactId>arquillian-container-test-spi</artifactId>
+            <scope>test</scope>
         </dependency>
         <!-- The JAX-RS client implemention -->
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-client</artifactId>
-            <version>3.6.2.Final</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-json-p-provider</artifactId>
-            <version>3.6.2.Final</version>
+            <scope>test</scope>
         </dependency>
 
 
@@ -54,20 +44,14 @@
         <dependency>
             <groupId>org.eclipse.microprofile.jwt</groupId>
             <artifactId>microprofile-jwt-auth-tck</artifactId>
-            <version>1.1.1</version>
+            <version>${version.org.eclipse.microprofile.jwt}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.eclipse.microprofile.jwt</groupId>
             <artifactId>microprofile-jwt-auth-tck</artifactId>
-            <version>1.1.1</version>
+            <version>${version.org.eclipse.microprofile.jwt}</version>
             <type>test-jar</type>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.weld</groupId>
-            <artifactId>weld-core-impl</artifactId>
-            <version>3.0.5.Final</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -108,14 +92,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-
                 <configuration>
                     <environmentVariables>
                         <JBOSS_HOME>${project.build.directory}/wildfly-${version.wildfly}</JBOSS_HOME>
                     </environmentVariables>
-                    <systemPropertyVariables>
-                        <jboss.options>--add-modules java.se</jboss.options>
-                    </systemPropertyVariables>
                     <redirectTestOutputToFile>true</redirectTestOutputToFile>
                     <suiteXmlFiles>
                         <suiteXmlFile>tck-suite.xml</suiteXmlFile>
